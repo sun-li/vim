@@ -1,4 +1,4 @@
 vim
 ===
 
-The resource files for my MacVim
+My resource files for my MacVim.
