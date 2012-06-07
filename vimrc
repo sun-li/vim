@@ -5,17 +5,31 @@
 "  http://github.com/sun-li   "
 " " " " " " " " " " " " " " " "
 
-" This .vimrc is for MacVim only
+" This .vimrc file is developed for MacVim
 set nocompatible
-" Disable modeline security leak
+
+" Preventing modeline security risk
 set modelines=0 
 
-syntax on
-set encoding=utf-8
+" Enable vim-powerline font patcher
+let g:Powerline_symbols = 'fancy'
+" Menlo for Powerline is a font patcher for vim-powerline
+set guifont=Menlo\ for\ Powerline:h12
+" It seems some plug-ins prevent changing lines=, must reset (disable and enable) pathogen plug-in (which is in the bottom of this file) after changing lines= 
+set lines=40
+set columns=90
+set colorcolumn=80
 
+let mapleader = ","
+
+nnoremap <leader>ev :tabedit $MYVIMRC<cr>
+
+set encoding=utf-8
+syntax on
 filetype plugin on
 filetype indent on
 
+" Always using space
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -29,27 +43,22 @@ set scrolloff=2
 set whichwrap+=<,>,h,l
 
 set relativenumber
-
 set showmode
 set showcmd
 set hidden
+set ruler
+set laststatus=2
 
 set wildmenu
 set wildmode=list:longest
 
 set visualbell
 set cursorline
-set ttyfast
-
-set ruler
-set laststatus=2
 
 " Version control tools would take over VIM for backups
 set nobackup
 set nowb
 set noswapfile
-
-let mapleader = ","
 
 set ignorecase
 set smartcase
@@ -57,30 +66,24 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
+
 nnoremap <leader><space> :noh<cr>
 
 nnoremap <tab> %
 vnoremap <tab> %
 
 nmap <leader>l :set list!<CR>
- " Use the same symbols as TextMate for tabstops and EOLs
+" Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
 inoremap jj <ESC>
 
 au FocusLost * :wa
 
-" Enable vim-powerline font patcher
-let g:Powerline_symbols = 'fancy'
-" Menlo for Powerline is a font patcher for vim-powerline
-set guifont=Menlo\ for\ Powerline:h12
-set lines=45
-set columns=90
-set textwidth=79
-set formatoptions=qrn1
-set colorcolumn=80
-
+" Wrap long text but do not break any word and show a break symbol
 set wrap
+set linebreak
+set showbreak=…
 
 " Slightly higher line height
 set linespace=1
@@ -91,8 +94,6 @@ set guioptions-=T
 colorscheme molokai
 
 set autoread
-
-nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 
 nnoremap <leader>w <C-w>T
 nnoremap <C-h> <C-w>h
