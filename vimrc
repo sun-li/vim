@@ -95,6 +95,9 @@ colorscheme molokai
 
 set autoread
 
+nnoremap <Space> <PageDown>
+nnoremap <S-Space> <PageUp>
+
 nnoremap <leader>w <C-w>T
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
