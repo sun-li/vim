@@ -1,35 +1,121 @@
-" " " " " " " " " " " " " " " "
-"  My .vimrc file for MacVim  "
-"  Maintained by SUN, Li      "
-"  http://MrSunLi.com         "
-"  http://github.com/sun-li   "
-" " " " " " " " " " " " " " " "
+" " " " " " " " " " " " " " " " " " "
+"  A comfortable .vimrc for MacVim  "
+"       Maintained by SUN Li        "
+"        http://MrSunLi.com         "
+"     http://github.com/sun-li      "
+" " " " " " " " " " " " " " " " " " "
 
-" This .vimrc file is developed for MacVim
+" Following comments tend to explain 'why' to use those settings
+" Please use command ':h' to check 'what' those settings are
+
+" -------------------- Plug-in Dependencies -------------------- 
+" Following settings depend on few plug-ins:
+"   vim-powerline
+"   vim-unimpaired
+"   pathogen
+
+" -------------------- Basic -------------------- 
+
+" This .vimrc file does not target to the legacy vi
 set nocompatible
 
-" Preventing modeline security risk
+" Preventing security risk
 set modelines=0 
 
-" Enable vim-powerline font patcher
+" Hiding tool bar on MacVim
+set guioptions-=T
+
+" More comfortable leader key
+let mapleader = ","
+
+" -------------------- Display -------------------- 
+
+" Assuming 'molokai' color scheme has been installed
+colorscheme molokai
+
+" Enable font patcher for plug-in vim-powerline 
 let g:Powerline_symbols = 'fancy'
-" Menlo for Powerline is a font patcher for vim-powerline
+" 'Menlo for Powerline' is a font patcher for vim-powerline on MacVim
 set guifont=Menlo\ for\ Powerline:h12
-" It seems some plug-ins prevent changing lines=, must reset (disable and enable) pathogen plug-in (which is in the bottom of this file) after changing lines= 
+" Font Menlo does not have enough line space
+set linespace=1
+
+" NOTE: It seems some plug-ins prevent changing 'lines=' 
+" Need to reset (disable then enable) pathogen plug-in after changing 'lines=' 
+
+" Screen size 90 x 40 seems like a nice balance 
 set lines=40
 set columns=90
 set colorcolumn=80
 
-let mapleader = ","
+" More comfortable cursor
+set scrolloff=5
+set cursorline
 
-nnoremap <leader>ev :tabedit $MYVIMRC<cr>
+" Easier for in-screen jumping
+set relativenumber
+
+" Displaying more information on status bar
+set showmode
+set showcmd
+set ruler
+set laststatus=2
+
+" Soft-wrap long text and show a break symbol
+set wrap
+set linebreak
+set showbreak=…
+
+" Checking invisible characters
+nmap <leader>l :set list!<CR>
+" Using the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
+" -------------------- Mode -------------------- 
+
+" Alternative way to go back command mode
+inoremap jj <ESC>
+
+" -------------------- Motion -------------------- 
+
+" More comfortable for browsing text
+nmap <Space> <PageDown>
+nmap <S-Space> <PageUp>
+
+" Assuming vim-unimpaired.vim has been installed
+" and C-up and C-down are disabled in System preference -> Keyboard
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
+" Easier for cursor moving
+set whichwrap+=<,>,h,l
+
+nnoremap <tab> %
+vnoremap <tab> %
+
+" Moving to center screen on next/previous selection
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+" also last and next jump 
+nnoremap <C-o> <C-o>zz
+nnoremap <C-i> <C-i>zz
+
+" -------------------- Programming source code -------------------- 
 
 set encoding=utf-8
+
 syntax on
+
 filetype plugin on
 filetype indent on
 
-" Always using space
+" Using space instead of tab (especially useful for Python)
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -39,71 +125,32 @@ set autoindent
 set smartindent
 set backspace=indent,eol,start
 
-set scrolloff=2
-set whichwrap+=<,>,h,l
-
-set relativenumber
-set showmode
-set showcmd
-set hidden
-set ruler
-set laststatus=2
+set foldmethod=indent
+set foldlevel=99
 
 set wildmenu
 set wildmode=list:longest
 
-set visualbell
-set cursorline
-
-" Version control tools would take over VIM for backups
-set nobackup
-set nowb
-set noswapfile
-
+" More comfortable searching options
 set ignorecase
 set smartcase
 set gdefault
 set incsearch
 set showmatch
 set hlsearch
-
+" Removing searching results quickly
 nnoremap <leader><space> :noh<cr>
 
-nnoremap <tab> %
-vnoremap <tab> %
+" -------------------- Windows and tabs -------------------- 
 
-nmap <leader>l :set list!<CR>
-" Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
-
-inoremap jj <ESC>
-
-au FocusLost * :wa
-
-" Wrap long text but do not break any word and show a break symbol
-set wrap
-set linebreak
-set showbreak=…
-
-" Slightly higher line height
-set linespace=1
-
-" Disable toolbar in MacVim
-set guioptions-=T
-
-colorscheme molokai
-
-set autoread
-
-nnoremap <Space> <PageDown>
-nnoremap <S-Space> <PageUp>
-
+" More comfortable to manage multi-window
 nnoremap <leader>w <C-w>T
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" More comfortable to manage multi-tab on MacVim
 map <D-]> gt
 map <D-[> gT
 map <D-1> 1gt
@@ -117,19 +164,29 @@ map <D-8> 8gt
 map <D-9> 9gt
 map <D-0> :tablast<CR>
 
-set foldmethod=indent
-set foldlevel=99
+" -------------------- Spell checking -------------------- 
 
-" Assuming vim-unimpaired.vim has been installed
-" MacVim need to disable C-up and C-down in System preference Keyboard
-" Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
-" Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+map <leader>ss :setlocal spell!<cr>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>sc z=
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+" -------------------- Files and buffers -------------------- 
+
+set hidden
+
+set autoread
+
+" Version control tools can do better job than VIM
+set nobackup
+set nowb
+set noswapfile
+
+" Auto-save 
+au FocusLost * :wa
+
+" Delete trailing white space on save, useful for Python and CoffeeScript 
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
@@ -138,20 +195,19 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
-" Toggle spell checking
-map <leader>ss :setlocal spell!<cr>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>sc z=
-
 " Return to last edit position when opening files 
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
+
 " Remember status of VIM
 set viminfo^=%
+
+" Twisting .vimrc easily
+nnoremap <leader>ev :tabedit $MYVIMRC<cr>
+
+" -------------------- Pathogen plug-in management -------------------- 
 
 " Assuming Pathogen plug-in is installed
 call pathogen#infect()
