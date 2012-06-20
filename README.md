@@ -30,20 +30,23 @@ Firstly, the leader key is mapped to `,` key.
     ,a::         : Tabulate by ::
     ,a,          : Tabulate by ,
     ,a SPACE     : Tabulate by SPACE
+
     ,ev          : Edit .vimrc file in a new tab
     ,fn          : Code fold level n
     ,l           : Toggle invisible characters
     ,o           : Opem command-t
     ,O           : Flush then open command-t
     ,q           : Quit current window
+    ,t           : Toggle tagbar
+    ,w           : Change current window to a new tab
+    ,SPACE       : Remove searching highlight results
+
     ,ss          : Toggle spell checking
     ,sc          : Correct spell error
     ,sa          : Add current word to dictionary
     ,sn          : Next spelling error
     ,sp          : Previous spelling error
-    ,t           : Toggle tagbar
-    ,w           : Change current window to a new tab
-    ,SPACE       : Remove searching highlight results
+
     SPACE        : Page Down
     SHIFT-SPACE  : Page up
     SHIFT-UP     : Scroll window up
@@ -52,6 +55,7 @@ Firstly, the leader key is mapped to `,` key.
     CONTROL-DOWN : Bubble lines down
     ENTER        : Insert a blank line
     SHIFT-ENTER  : Break the line from cursor and insert a blank line
+
     CONTROL-H    : Jump to left window
     CONTROL-L    : Jump to right window
     CONTROL-K    : Jump to upper window
@@ -66,6 +70,7 @@ Firstly, the leader key is mapped to `,` key.
     ,a::         : Tabulate by ::
     ,a,          : Tabulate by ,
     ,a SPACE     : Tabulate by SPACE
+
     ~            : Toggle to UPPER CASE, lower case and Title Case
 
 ## Installation
