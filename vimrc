@@ -1,55 +1,77 @@
-" " " " " " " " " " " " " " " " " " "
-"  A comfortable .vimrc for MacVim  "
-"       Maintained by SUN Li        "
-"        http://MrSunLi.com         "
-"     http://github.com/sun-li      "
-" " " " " " " " " " " " " " " " " " "
+" " " " " " " " " " " " " " " " " " " "
+"  A comfortable .vimrc (for MacVim)  "
+"        Maintained by SUN, Li        "
+"         http://MrSunLi.com          "
+"      http://github.com/sun-li       "
+" " " " " " " " " " " " " " " " " " " "
 
-" Following comments tend to explain 'why' to use those settings
-" Please use command ':h' to check 'what' those settings are
+" I tend to explain 'why' to use following settings in my comments
+" Please use command ':h' to check 'what' do those settings mean
 
-" -------------------- Plug-in Dependencies -------------------- 
-" Following settings depend on few plug-ins:
+" -------------------- Dependencies -------------------- 
+" Assuming following plug-ins have been installed
+"   pathogen
 "   vim-powerline
 "   vim-unimpaired
-"   pathogen
+"   command-t
+"   tagbar
+"   tabular
+" Assuming 'molokai' color scheme has been installed
 
-" -------------------- Basic -------------------- 
+" -------------------- General -------------------- 
 
-" This .vimrc file does not target to the legacy vi
+" This .vimrc file target to MacVim
 set nocompatible
 
 " Preventing security risk
 set modelines=0 
 
-" Hiding tool bar on MacVim
-set guioptions-=T
-
 " More comfortable leader key
 let mapleader = ","
 
+" -------------------- Plug-in Pathogen -------------------- 
+
+call pathogen#infect()
+call pathogen#helptags()
+
+" -------------------- MacVim Special -------------------- 
+
+if has("gui_macvim")
+    " Removing unnecessary GUI elements
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=b
+
+    " Mac style shift key
+    let macvim_hig_shift_movement = 1
+
+    " Making use full screen
+    set fuoptions=maxvert,maxhorz
+endif
+
 " -------------------- Display -------------------- 
 
-" Assuming 'molokai' color scheme has been installed
 colorscheme molokai
 
-" Enable font patcher for plug-in vim-powerline 
+set gcr=a:blinkon0
+
+" Enabling font patcher for plug-in vim-powerline 
 let g:Powerline_symbols = 'fancy'
 " 'Menlo for Powerline' is a font patcher for vim-powerline on MacVim
 set guifont=Menlo\ for\ Powerline:h12
-" Font Menlo does not have enough line space
+
+" Menlo does not have enough line space
 set linespace=1
 
-" NOTE: It seems some plug-ins prevent changing 'lines=' 
-" Need to reset (disable then enable) pathogen plug-in after changing 'lines=' 
-
-" Screen size 90 x 40 seems like a nice balance 
 set lines=40
 set columns=90
 set colorcolumn=80
 
 " More comfortable cursor
-set scrolloff=5
+set scrolloff=3
 set cursorline
 
 " Easier for in-screen jumping
@@ -60,6 +82,7 @@ set showmode
 set showcmd
 set ruler
 set laststatus=2
+set cmdheight=2
 
 " Soft-wrap long text and show a break symbol
 set wrap
@@ -67,7 +90,7 @@ set linebreak
 set showbreak=…
 
 " Checking invisible characters
-nmap <leader>l :set list!<CR>
+nmap <silent> <leader>l :set list!<CR>
 " Using the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
@@ -81,6 +104,8 @@ inoremap jj <ESC>
 " More comfortable for browsing text
 nmap <Space> <PageDown>
 nmap <S-Space> <PageUp>
+nmap <S-UP> <C-Y>
+nmap <S-DOWN> <C-E>
 
 " Assuming vim-unimpaired.vim has been installed
 " and C-up and C-down are disabled in System preference -> Keyboard
@@ -94,9 +119,6 @@ vmap <C-Down> ]egv
 " Easier for cursor moving
 set whichwrap+=<,>,h,l
 
-nnoremap <tab> %
-vnoremap <tab> %
-
 " Moving to center screen on next/previous selection
 nnoremap n nzz
 nnoremap N Nzz
@@ -106,7 +128,38 @@ nnoremap # #zz
 nnoremap <C-o> <C-o>zz
 nnoremap <C-i> <C-i>zz
 
-" -------------------- Programming source code -------------------- 
+" -------------------- Editing -------------------- 
+
+" Toggle UPPER CASE, lower case and Title Case
+function! TwiddleCase(str)
+  if a:str ==# toupper(a:str)
+    let result = tolower(a:str)
+  elseif a:str ==# tolower(a:str)
+    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+  else
+    let result = toupper(a:str)
+  endif
+  return result
+endfunction
+vnoremap ~ ygv"=TwiddleCase(@")<CR>Pgv
+
+" More comfortable Enter
+nnoremap <CR> O<esc>j
+nnoremap <S-Enter> i<cr><esc>
+
+" Indent if cursor is at the beginning of a line.  Otherwise, do completion
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+" -------------------- Coding -------------------- 
 
 set encoding=utf-8
 
@@ -125,9 +178,6 @@ set autoindent
 set smartindent
 set backspace=indent,eol,start
 
-set foldmethod=indent
-set foldlevel=99
-
 set wildmenu
 set wildmode=list:longest
 
@@ -138,8 +188,24 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
+
 " Removing searching results quickly
-nnoremap <leader><space> :noh<cr>
+nnoremap <silent> <leader><space> :noh<cr>
+
+set foldmethod=indent
+set foldlevel=99
+set foldenable
+
+nnoremap <leader>f0 :set foldlevel=0<CR>
+nnoremap <leader>f1 :set foldlevel=1<CR>
+nnoremap <leader>f2 :set foldlevel=2<CR>
+nnoremap <leader>f3 :set foldlevel=3<CR>
+nnoremap <leader>f4 :set foldlevel=4<CR>
+nnoremap <leader>f5 :set foldlevel=5<CR>
+nnoremap <leader>f6 :set foldlevel=6<CR>
+nnoremap <leader>f7 :set foldlevel=7<CR>
+nnoremap <leader>f8 :set foldlevel=8<CR>
+nnoremap <leader>f9 :set foldlevel=9<CR>
 
 " -------------------- Windows and tabs -------------------- 
 
@@ -172,7 +238,7 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>sc z=
 
-" -------------------- Files and buffers -------------------- 
+" -------------------- Buffers -------------------- 
 
 set hidden
 
@@ -182,6 +248,9 @@ set autoread
 set nobackup
 set nowb
 set noswapfile
+
+" Quit window quickly
+nnoremap <leader>q :q<cr>
 
 " Auto-save 
 au FocusLost * :wa
@@ -194,6 +263,7 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
+autocmd BufWrite *.md :call DeleteTrailingWS()
 
 " Return to last edit position when opening files 
 autocmd BufReadPost *
@@ -206,9 +276,36 @@ set viminfo^=%
 
 " Twisting .vimrc easily
 nnoremap <leader>ev :tabedit $MYVIMRC<cr>
+autocmd! bufwritepost .vimrc source %
+autocmd! bufwritepost vimrc source %
 
-" -------------------- Pathogen plug-in management -------------------- 
+" -------------------- Plug-in Command-T -------------------- 
 
-" Assuming Pathogen plug-in is installed
-call pathogen#infect()
-call pathogen#helptags()
+" Open file
+noremap <leader>o <esc>:CommandT<cr>
+noremap <leader>O <esc>:CommandTFlush<cr>\|:CommandT<cr>
+
+let g:CommandTMaxHeight = 20
+
+" -------------------- Plug-in Tagbar -------------------- 
+
+nnoremap <leader>t :TagbarToggle<cr>
+
+" Saving space
+let g:tagbar_autoclose = 1
+let g:tagbar_compact = 1
+let g:tagbar_expand = 1
+
+" -------------------- Plug-in Tabular -------------------- 
+
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a:: :Tabularize /:\zs<CR>
+vmap <Leader>a:: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,<CR>
+vmap <Leader>a, :Tabularize /,<CR>
+nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+
