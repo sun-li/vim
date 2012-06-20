@@ -22,9 +22,11 @@ I also highly recommend 'molokai' color scheme.
 Firstly, the leader key is mapped to `,` key.
 
 ### Insert Mode
+
     jj           : Go back to Normal Mode
 
 ### Normal Mode
+
     ,a=          : Tabulate by =
     ,a:          : Tabulate by :
     ,a::         : Tabulate by ::
@@ -65,6 +67,7 @@ Firstly, the leader key is mapped to `,` key.
     COMMAND-n    : Jump to nth tab
 
 ### Visual Mode
+
     ,a=          : Tabulate by =
     ,a:          : Tabulate by :
     ,a::         : Tabulate by ::
