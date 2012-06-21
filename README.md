@@ -1,4 +1,4 @@
-# A COMFORTABLE .VIMRC FILE (FOR MACVIM)
+# A Comfortable .vimrc File (Optimized for Macvim 7.3)
 
 ## Target Users
 
@@ -80,7 +80,7 @@ Firstly, the leader key is mapped to `,` key.
 
 You can either browse and copy file vimrc online or use following command line to "install" this .vimrc file.
 
-    git clone https://github.com/sun-li/vim.git
+    git clone git://github.com/sun-li/vim.git
     cp vimrc ~/.vimrc
 
 ## Note
