@@ -58,15 +58,10 @@ colorscheme molokai
 
 set gcr=a:blinkon0
 
-" Enabling font patcher for plug-in vim-powerline 
-let g:Powerline_symbols = 'fancy'
-" 'Menlo for Powerline' is a font patcher for vim-powerline on MacVim
-set guifont=Menlo\ for\ Powerline:h12
-
 " Menlo does not have enough line space
 set linespace=1
 
-set lines=40
+set lines=45
 set columns=90
 set colorcolumn=80
 
@@ -82,7 +77,7 @@ set showmode
 set showcmd
 set ruler
 set laststatus=2
-set cmdheight=2
+"set cmdheight=2
 
 " Soft-wrap long text and show a break symbol
 set wrap
@@ -279,6 +274,13 @@ nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost vimrc source %
 
+" -------------------- Plug-in Powerline -------------------- 
+
+" Enabling font patcher for plug-in vim-powerline 
+let g:Powerline_symbols = 'fancy'
+" 'Menlo for Powerline' is a font patcher for vim-powerline on MacVim
+set guifont=Menlo\ for\ Powerline:h12
+
 " -------------------- Plug-in Command-T -------------------- 
 
 " Open file
@@ -308,4 +310,5 @@ nmap <Leader>a, :Tabularize /,<CR>
 vmap <Leader>a, :Tabularize /,<CR>
 nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+
 
