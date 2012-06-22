@@ -125,6 +125,9 @@ nnoremap <C-i> <C-i>zz
 
 " -------------------- Editing -------------------- 
 
+" No need to follow vi command
+map Y y$
+
 " Toggle UPPER CASE, lower case and Title Case
 function! TwiddleCase(str)
   if a:str ==# toupper(a:str)
@@ -223,13 +226,9 @@ nnoremap <leader>1 :set columns=85<cr>
     " One extra column for window's border
 nnoremap <leader>2 :set columns=171<cr>\|:wincmd =<cr>
 
-" Quit window quickly
-nnoremap <leader>q :q<cr>
-
 " Also make use tab
 cabbrev help tab help
 cabbrev h tab h
-nnoremap <leader>w <C-w>T
 
 " More comfortable to manage multi-tab on MacVim
 map <D-]> gt
@@ -263,6 +262,9 @@ set autoread
 set nobackup
 set nowb
 set noswapfile
+
+nnoremap <leader>q :q<cr>
+lnoremap <leader>w :w<cr>
 
 " Auto-save 
 au FocusLost * :wa
@@ -300,7 +302,7 @@ set guifont=Menlo\ for\ Powerline:h12
 
 " -------------------- Plug-in Command-T -------------------- 
 
-let g:CommandTMaxHeight = 20
+let g:CommandTMaxHeight = 30
 
 " Open file
 noremap <leader>o :CommandT<cr>
@@ -308,6 +310,13 @@ noremap <leader>O :CommandTFlush<cr>\|:CommandT<cr>
 
 " Open buffer
 nnoremap <leader>b :CommandTBuffer<cr>
+
+" -------------------- Plug-in NerdTree -------------------- 
+
+nnoremap <leader>f :NERDTreeToggle<cr>
+
+let NERDTreeQuitOnOpen=1
+let NERDTreeWinPos='right'
 
 " -------------------- Plug-in Tagbar -------------------- 
 
@@ -331,4 +340,10 @@ vmap <Leader>a, :Tabularize /,<CR>
 nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
+" -------------------- Plug-in Tabular -------------------- 
+
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {} 
+let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails'
+let g:snipMate.scope_aliases['javascript'] = 'javascript,javascript-jquery'
 
