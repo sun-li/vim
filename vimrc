@@ -62,7 +62,7 @@ set gcr=a:blinkon0
 set linespace=1
 
 set lines=45
-set columns=90
+set columns=85
 set colorcolumn=80
 
 " More comfortable cursor
@@ -204,12 +204,29 @@ nnoremap <leader>f9 :set foldlevel=9<CR>
 
 " -------------------- Windows and tabs -------------------- 
 
-" More comfortable to manage multi-window
-nnoremap <leader>w <C-w>T
+" Split new window in a more comfortale way
+nnoremap <leader>sh :leftabove vnew<cr>
+nnoremap <leader>sl :rightbelow vnew<cr>
+nnoremap <leader>sk :leftabove new<cr>
+nnoremap <leader>sj :rightbelow new<cr>
+
+" More comfortable to navigate multi-window
+set winminheight=0
+nnoremap <C-j> <C-w>j<C-w>_
+nnoremap <C-k> <C-w>k<C-w>_
+
 nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Make use desktop space
+nnoremap <leader>1 :set columns=85<cr>
+    " One extra column for window's border
+nnoremap <leader>2 :set columns=171<cr>\|:wincmd =<cr>
+
+" Also make use tab
+cabbrev help tab help
+cabbrev h tab h
+nnoremap <leader>w <C-w>T
 
 " More comfortable to manage multi-tab on MacVim
 map <D-]> gt
@@ -283,11 +300,14 @@ set guifont=Menlo\ for\ Powerline:h12
 
 " -------------------- Plug-in Command-T -------------------- 
 
-" Open file
-noremap <leader>o <esc>:CommandT<cr>
-noremap <leader>O <esc>:CommandTFlush<cr>\|:CommandT<cr>
-
 let g:CommandTMaxHeight = 20
+
+" Open file
+noremap <leader>o :CommandT<cr>
+noremap <leader>O :CommandTFlush<cr>\|:CommandT<cr>
+
+" Open buffer
+nnoremap <leader>b :CommandTBuffer<cr>
 
 " -------------------- Plug-in Tagbar -------------------- 
 
