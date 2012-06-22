@@ -2,7 +2,7 @@
 
 ## Target Users
 
-This .vimrc file is developed for programmers.  it is optimized for macvim 7.3.  but it is also useful for regular vim/gvim.
+This .vimrc file is developed for programmers.  It is optimized for MacVim 7.3.  But it is also useful for regular Vim/gVim.
 
 ## Recommended Plug-ins
 
@@ -15,9 +15,9 @@ I highly recommend following plug-ins, which are also involved in this .vimrc fi
 * tagbar
 * tabular
 
-I also highly recommend 'molokai' color scheme.
+I also recommend 'molokai' color scheme, which is involved in this .virmc file.
 
-## Keys
+## Key Maps
 
 Firstly, the leader key is mapped to `,` key.
 
@@ -27,20 +27,20 @@ Firstly, the leader key is mapped to `,` key.
 
 ### Normal Mode
 
-    ,a=          : Tabulate by =
-    ,a:          : Tabulate by :
-    ,a::         : Tabulate by ::
-    ,a,          : Tabulate by ,
-    ,a SPACE     : Tabulate by SPACE
+    ,a=          : Tabulate by =          (by plug-in tabular)
+    ,a:          : Tabulate by :          (by plug-in tabular)
+    ,a::         : Tabulate by ::         (by plug-in tabular)
+    ,a,          : Tabulate by ,          (by plug-in tabular)
+    ,a SPACE     : Tabulate by SPACE      (by plug-in tabular)
 
-    ,b           : Buffers list
+    ,b           : Buffers list           (by plug-in command-t)
     ,ev          : Edit .vimrc file in a new tab
     ,fn          : Code fold level n
     ,l           : Toggle invisible characters
-    ,o           : Files list
-    ,O           : Files list with flush
+    ,o           : Files list             (by plug-in command-t)
+    ,O           : Files list with flush  (by plug-in command-t)
     ,q           : Quit current window
-    ,t           : Toggle tagbar
+    ,t           : Toggle tagbar          (by plug-in tagbar)
     ,w           : Change current window to a new tab
     ,SPACE       : Remove searching highlight results
 
@@ -61,8 +61,8 @@ Firstly, the leader key is mapped to `,` key.
     SHIFT-SPACE  : Page up
     SHIFT-UP     : Scroll window up
     SHIFT-DOWN   : Scroll window down
-    CONTROL-UP   : Bubble lines up
-    CONTROL-DOWN : Bubble lines down
+    CONTROL-UP   : Bubble lines up        (by plug-in vim-unimpaired)
+    CONTROL-DOWN : Bubble lines down      (by plug-in vim-unimpaired)
     ENTER        : Insert a blank line
     SHIFT-ENTER  : Break the line from cursor and insert a blank line
 
@@ -76,21 +76,21 @@ Firstly, the leader key is mapped to `,` key.
 
 ### Visual Mode
 
-    ,a=          : Tabulate by =
-    ,a:          : Tabulate by :
-    ,a::         : Tabulate by ::
-    ,a,          : Tabulate by ,
-    ,a SPACE     : Tabulate by SPACE
+    ,a=          : Tabulate by =          (by plug-in tabular)
+    ,a:          : Tabulate by :          (by plug-in tabular)
+    ,a::         : Tabulate by ::         (by plug-in tabular)
+    ,a,          : Tabulate by ,          (by plug-in tabular)
+    ,a SPACE     : Tabulate by SPACE      (by plug-in tabular)
 
     ~            : Toggle to UPPER CASE, lower case and Title Case
 
 ## Installation
 
-You can either browse and copy file vimrc online or use following command line to "install" this .vimrc file.
+You can either browse and copy file vimrc from github.com or use following command line to "install" this .vimrc file.
 
     git clone git://github.com/sun-li/vim.git
     cp vimrc ~/.vimrc
 
 ## Note
 
-Please read embedded comments in the .vimrc file for details.
+If you have interest for the technical details, please read embedded comments in the .vimrc file.
