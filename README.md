@@ -33,22 +33,23 @@ Firstly, the leader key is mapped to `,` key.
     ,a,          : Tabulate by ,
     ,a SPACE     : Tabulate by SPACE
 
+    ,b           : Buffers list
     ,ev          : Edit .vimrc file in a new tab
     ,fn          : Code fold level n
     ,l           : Toggle invisible characters
-    ,o           : Opem command-t
-    ,O           : Flush then open command-t
+    ,o           : Files list
+    ,O           : Files list with flush
     ,q           : Quit current window
     ,t           : Toggle tagbar
     ,w           : Change current window to a new tab
     ,SPACE       : Remove searching highlight results
 
-    ,1 : Single window
-    ,2 : Dual window
-    ,sh : New window on left
-    ,sl : New windwo on rught
-    ,sk : New window on top
-    ,sj : New window on bottom
+    ,1           : Single window
+    ,2           : Dual window
+    ,sh          : New window on left
+    ,sl          : New windwo on rught
+    ,sk          : New window on top
+    ,sj          : New window on bottom
 
     ,ss          : Toggle spell checking
     ,sc          : Correct spell error
