@@ -223,6 +223,9 @@ nnoremap <leader>1 :set columns=85<cr>
     " One extra column for window's border
 nnoremap <leader>2 :set columns=171<cr>\|:wincmd =<cr>
 
+" Quit window quickly
+nnoremap <leader>q :q<cr>
+
 " Also make use tab
 cabbrev help tab help
 cabbrev h tab h
@@ -260,9 +263,6 @@ set autoread
 set nobackup
 set nowb
 set noswapfile
-
-" Quit window quickly
-nnoremap <leader>q :q<cr>
 
 " Auto-save 
 au FocusLost * :wa

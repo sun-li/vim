@@ -43,6 +43,13 @@ Firstly, the leader key is mapped to `,` key.
     ,w           : Change current window to a new tab
     ,SPACE       : Remove searching highlight results
 
+    ,1 : Single window
+    ,2 : Dual window
+    ,sh : New window on left
+    ,sl : New windwo on rught
+    ,sk : New window on top
+    ,sj : New window on bottom
+
     ,ss          : Toggle spell checking
     ,sc          : Correct spell error
     ,sa          : Add current word to dictionary
@@ -60,8 +67,8 @@ Firstly, the leader key is mapped to `,` key.
 
     CONTROL-H    : Jump to left window
     CONTROL-L    : Jump to right window
-    CONTROL-K    : Jump to upper window
-    CONTROL-J    : Jump to lower window
+    CONTROL-K    : Jump to upper window and maximize it
+    CONTROL-J    : Jump to lower window and maximize it
     COMMAND-]    : Jump to left tab
     COMMAND-[    : Jump to right tab
     COMMAND-n    : Jump to nth tab
