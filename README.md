@@ -6,7 +6,7 @@ This .vimrc file is developed for programmers.  It is optimized for MacVim 7.3. 
 
 ## Recommended Plug-ins
 
-I highly recommend following plug-ins, which are also involved in this .vimrc file.
+I highly recommend following plug-ins, which are involved in this .vimrc file.
 
 * pathogen
 * vim-powerline
@@ -14,6 +14,8 @@ I highly recommend following plug-ins, which are also involved in this .vimrc fi
 * command-t
 * tagbar
 * tabular
+* nerdtree
+* snipmate
 
 I also recommend 'molokai' color scheme, which is involved in this .virmc file.
 
