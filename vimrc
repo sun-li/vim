@@ -16,6 +16,9 @@
 "   command-t
 "   tagbar
 "   tabular
+"   nerdtree
+"   snipmate
+"   supertab
 " Assuming 'molokai' color scheme has been installed
 
 " -------------------- General -------------------- 
@@ -348,4 +351,8 @@ let g:snipMate = {}
 let g:snipMate.scope_aliases = {} 
 let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails'
 let g:snipMate.scope_aliases['javascript'] = 'javascript,javascript-jquery'
+
+" -------------------- Plug-in SuperTab -------------------- 
+
+let g:SuperTabDefaultCompletionType = "context"
 
