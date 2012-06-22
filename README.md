@@ -16,6 +16,7 @@ I highly recommend following plug-ins, which are involved in this .vimrc file.
 * tabular
 * nerdtree
 * snipmate
+* supertab
 
 I also recommend 'molokai' color scheme, which is involved in this .virmc file.
 
@@ -26,6 +27,7 @@ Firstly, the leader key is mapped to `,` key.
 ### Insert Mode
 
     jj           : Go back to Normal Mode
+    TAB          : Auto completion
 
 ### Normal Mode
 
@@ -33,7 +35,7 @@ Firstly, the leader key is mapped to `,` key.
     ,a:          : Tabulate by :          (by plug-in tabular)
     ,a::         : Tabulate by ::         (by plug-in tabular)
     ,a,          : Tabulate by ,          (by plug-in tabular)
-    ,a SPACE     : Tabulate by SPACE      (by plug-in tabular)
+    ,a<SPACE>    : Tabulate by SPACE      (by plug-in tabular)
 
     ,b           : Buffers list           (by plug-in command-t)
     ,ev          : Edit .vimrc file in a new tab
