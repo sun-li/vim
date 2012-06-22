@@ -225,6 +225,8 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>1 :set columns=85<cr>
     " One extra column for window's border
 nnoremap <leader>2 :set columns=171<cr>\|:wincmd =<cr>
+    " Two extra column for window's border
+nnoremap <leader>3 :set columns=257<cr>\|:wincmd =<cr>
 
 " Also make use tab
 cabbrev help tab help
@@ -264,7 +266,7 @@ set nowb
 set noswapfile
 
 nnoremap <leader>q :q<cr>
-lnoremap <leader>w :w<cr>
+nnoremap <leader>w :w<cr>
 
 " Auto-save 
 au FocusLost * :wa

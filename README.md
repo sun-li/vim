@@ -17,7 +17,7 @@ I highly recommend following plug-ins, which are also involved in this .vimrc fi
 
 I also recommend 'molokai' color scheme, which is involved in this .virmc file.
 
-## Key Maps
+## New Keys
 
 Firstly, the leader key is mapped to `,` key.
 
@@ -35,17 +35,19 @@ Firstly, the leader key is mapped to `,` key.
 
     ,b           : Buffers list           (by plug-in command-t)
     ,ev          : Edit .vimrc file in a new tab
+    ,f           : Fiels list             (by plug-in nerdtree)
     ,fn          : Code fold level n
     ,l           : Toggle invisible characters
     ,o           : Files list             (by plug-in command-t)
     ,O           : Files list with flush  (by plug-in command-t)
     ,q           : Quit current window
     ,t           : Toggle tagbar          (by plug-in tagbar)
-    ,w           : Change current window to a new tab
+    ,w           : Write
     ,SPACE       : Remove searching highlight results
 
     ,1           : Single window
     ,2           : Dual window
+    ,3           : Trible window
     ,sh          : New window on left
     ,sl          : New windwo on rught
     ,sk          : New window on top
@@ -82,7 +84,14 @@ Firstly, the leader key is mapped to `,` key.
     ,a,          : Tabulate by ,          (by plug-in tabular)
     ,a SPACE     : Tabulate by SPACE      (by plug-in tabular)
 
-    ~            : Toggle to UPPER CASE, lower case and Title Case
+## Improved Keys
+
+    ~            : Toggle among UPPER CASE, lower case and Title Case
+    n/N          : Scroll to the middle
+    */#          : Scroll to the middle
+    CONTROL-o/i  : Scroll to the middle
+    Y            : Yank to end of line
+    h/help       : Open help in new tab
 
 ## Installation
 
