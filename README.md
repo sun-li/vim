@@ -27,7 +27,7 @@ Firstly, the leader key is mapped to `,` key.
 ### Insert Mode
 
     jj           : Go back to Normal Mode
-    TAB          : Auto completion
+    TAB          : Auto completion        (by plug-in supertab)
 
 ### Normal Mode
 
@@ -38,8 +38,8 @@ Firstly, the leader key is mapped to `,` key.
     ,a<SPACE>    : Tabulate by SPACE      (by plug-in tabular)
 
     ,b           : Buffers list           (by plug-in command-t)
+    ,d           : Directories            (by plug-in nerdtree)
     ,ev          : Edit .vimrc file in a new tab
-    ,f           : Fiels list             (by plug-in nerdtree)
     ,fn          : Code fold level n
     ,l           : Toggle invisible characters
     ,o           : Files list             (by plug-in command-t)

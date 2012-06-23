@@ -318,7 +318,7 @@ nnoremap <leader>b :CommandTBuffer<cr>
 
 " -------------------- Plug-in NerdTree -------------------- 
 
-nnoremap <leader>f :NERDTreeToggle<cr>
+nnoremap <leader>d :NERDTreeToggle<cr>
 
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinPos='right'
