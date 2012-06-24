@@ -4,7 +4,7 @@
 
 This .vimrc file is developed for programmers.
 
-It is optimized for MacVim 7.3.  However, it should be useful for regular Vim/gVim, too.
+It is optimized for MacVim 7.3.  Meanwhile, it is useful for regular Vim/gVim, too.
 
 ## Recommended Plug-ins
 
