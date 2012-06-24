@@ -1,8 +1,10 @@
-# A Comfortable .vimrc File (Optimized for Macvim 7.3)
+# A Comfortable .vimrc File (optimized for MacVim 7.3)
 
 ## Target Users
 
-This .vimrc file is developed for programmers.  It is optimized for MacVim 7.3.  But it is also useful for regular Vim/gVim.
+This .vimrc file is developed for programmers.
+
+It is optimized for MacVim 7.3.  However, it should be useful for regular Vim/gVim, too.
 
 ## Recommended Plug-ins
 
@@ -69,6 +71,7 @@ Firstly, the leader key is mapped to `,` key.
     SHIFT-DOWN   : Scroll window down
     CONTROL-UP   : Bubble lines up        (by plug-in vim-unimpaired)
     CONTROL-DOWN : Bubble lines down      (by plug-in vim-unimpaired)
+    BACKSPACE    : Behave like BACKSPACE under insert mode
     ENTER        : Insert a blank line
     SHIFT-ENTER  : Break the line from cursor and insert a blank line
 

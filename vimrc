@@ -148,6 +148,9 @@ vnoremap ~ ygv"=TwiddleCase(@")<CR>Pgv
 nnoremap <CR> O<esc>j
 nnoremap <S-Enter> i<cr><esc>
 
+" More comfortable BACKSPACE
+nnoremap <BS> kJ
+
 " -------------------- Coding -------------------- 
 
 set encoding=utf-8
