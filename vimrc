@@ -59,7 +59,7 @@ endif
 
 colorscheme molokai
 
-set gcr=a:blinkon0
+set gcr=n-v:blinkon0
 
 " Menlo does not have enough line space
 set linespace=1
