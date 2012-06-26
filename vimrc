@@ -216,11 +216,26 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Make use desktop space
-nnoremap <leader>1 :set columns=85<cr>
+func! SingleWindow()
+    wincmd o
+    set columns=85
+endfunc
+func! DoubleWindow()
     " One extra column for window's border
-nnoremap <leader>2 :set columns=171<cr>\|:wincmd =<cr>
+    set columns=171
+    vnew
+    wincmd x
+    wincmd =
+    wincmd l
+endfunc
+func! TribleWindow()
     " Two extra column for window's border
-nnoremap <leader>3 :set columns=257<cr>\|:wincmd =<cr>
+    set columns=257
+    wincmd =
+endfunc
+nnoremap <leader>1 :call SingleWindow()<cr>
+nnoremap <leader>2 :call DoubleWindow()<cr>
+nnoremap <leader>3 :call TribleWindow()<cr>
 
 " Also make use tab
 cabbrev help tab help
