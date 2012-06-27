@@ -217,25 +217,41 @@ nnoremap <C-l> <C-w>l
 
 " Make use desktop space
 func! SingleWindow()
-    wincmd o
     set columns=85
+
+    wincmd o
 endfunc
-func! DoubleWindow()
+
+func! DualWindow()
     " One extra column for window's border
     set columns=171
-    vnew
-    wincmd x
+
+    if winnr('$')==1
+        vnew
+        wincmd x
+        wincmd l
+    endif
+
     wincmd =
-    wincmd l
 endfunc
-func! TribleWindow()
+
+func! TriWindow()
     " Two extra column for window's border
     set columns=257
+
+    " Assuming TriWindow always after DualWindow, not SingleWindow
+    if winnr('$')==2
+        vnew
+        wincmd x
+        wincmd l
+    endif
+
     wincmd =
 endfunc
+
 nnoremap <leader>1 :call SingleWindow()<cr>
-nnoremap <leader>2 :call DoubleWindow()<cr>
-nnoremap <leader>3 :call TribleWindow()<cr>
+nnoremap <leader>2 :call DualWindow()<cr>
+nnoremap <leader>3 :call TriWindow()<cr>
 
 " Also make use tab
 cabbrev help tab help
