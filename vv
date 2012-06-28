@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if (($# > 0)) 
+then 
+    mvim --remote-silent $@
+else
+    mvim
+fi
