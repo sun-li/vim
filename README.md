@@ -52,8 +52,8 @@ Firstly, the leader key is mapped to `,` key.
     ,SPACE       : Remove searching highlight results
 
     ,1           : Single window
-    ,2           : Dual window
-    ,3           : Trible window
+    ,2           : Dual-window
+    ,3           : Tri-window
     ,sh          : New window on left
     ,sl          : New windwo on rught
     ,sk          : New window on top
@@ -65,12 +65,16 @@ Firstly, the leader key is mapped to `,` key.
     ,sn          : Next spelling error
     ,sp          : Previous spelling error
 
-    SPACE        : Page Down
     SHIFT-SPACE  : Page up
+    SPACE        : Page Down
     SHIFT-UP     : Scroll window up
     SHIFT-DOWN   : Scroll window down
     CONTROL-UP   : Bubble lines up        (by plug-in vim-unimpaired)
     CONTROL-DOWN : Bubble lines down      (by plug-in vim-unimpaired)
+
+    CONTROL-LEFT : Previous buffer
+    CONTROL-RIGHT: Next buffer
+
     BACKSPACE    : Behave like BACKSPACE under insert mode
     ENTER        : Insert a blank line
     SHIFT-ENTER  : Break the line from cursor and insert a blank line
