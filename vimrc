@@ -94,8 +94,13 @@ set listchars=tab:▸\ ,eol:¬
 
 " -------------------- Mode -------------------- 
 
-" Alternative way to go back command mode
+" Alternative way to go back normal mode
 inoremap jj <ESC>
+
+" Go back normal mode automatically
+au CursorHoldI * stopinsert 
+au InsertEnter * let updaterestore=&updatetime | set updatetime=10000
+au InsertLeave * let &updatetime=updaterestore
 
 " -------------------- Motion -------------------- 
 
