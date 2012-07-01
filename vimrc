@@ -165,6 +165,8 @@ syntax on
 filetype plugin on
 filetype indent on
 
+set omnifunc=syntaxcomplete#Complete
+
 " Using space instead of tab (especially useful for Python)
 set tabstop=4
 set shiftwidth=4
