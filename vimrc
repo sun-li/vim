@@ -301,8 +301,8 @@ set noswapfile
 nnoremap <silent> <C-Left> :bp<cr>
 nnoremap <silent> <C-Right> :bn<cr>
 
-nnoremap <leader>q :q<cr>
-nnoremap <leader>w :w<cr>
+nnoremap <silent> <leader>q :bd<cr>
+nnoremap <silent> <leader>w :w<cr>
 
 " Auto-save 
 au FocusLost * :wa
