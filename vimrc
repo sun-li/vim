@@ -206,6 +206,11 @@ nnoremap <leader>f7 :set foldlevel=7<CR>
 nnoremap <leader>f8 :set foldlevel=8<CR>
 nnoremap <leader>f9 :set foldlevel=9<CR>
 
+" Exporting source code to html
+let html_number_lines=1
+let html_use_css=1
+let use_xhtml=1
+
 " -------------------- Windows and tabs -------------------- 
 
 " Split new window in a more comfortale way
