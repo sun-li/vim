@@ -19,6 +19,7 @@ I highly recommend following plug-ins, which are involved in this .vimrc file.
 * nerdtree
 * snipmate
 * supertab
+* mini-buffer-explorer
 
 I also recommend 'molokai' color scheme, which is involved in this .virmc file.
 
@@ -46,7 +47,7 @@ Firstly, the leader key is mapped to `,` key.
     ,l           : Toggle invisible characters
     ,o           : Files list             (by plug-in command-t)
     ,O           : Files list with flush  (by plug-in command-t)
-    ,q           : Quit current window
+    ,q           : Close current buffer and quit current window
     ,t           : Toggle tagbar          (by plug-in tagbar)
     ,w           : Write
     ,SPACE       : Remove searching highlight results
@@ -83,9 +84,6 @@ Firstly, the leader key is mapped to `,` key.
     CONTROL-L    : Jump to right window
     CONTROL-K    : Jump to upper window and maximize it
     CONTROL-J    : Jump to lower window and maximize it
-    COMMAND-]    : Jump to left tab
-    COMMAND-[    : Jump to right tab
-    COMMAND-n    : Jump to nth tab
 
 ### Visual Mode
 

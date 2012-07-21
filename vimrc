@@ -220,7 +220,7 @@ nnoremap <leader>sk :leftabove new<cr>
 nnoremap <leader>sj :rightbelow new<cr>
 
 " More comfortable to navigate multi-window
-set winminheight=0
+set winminheight=1
 nnoremap <C-j> <C-w>j<C-w>_
 nnoremap <C-k> <C-w>k<C-w>_
 
@@ -265,23 +265,6 @@ nnoremap <leader>1 :call SingleWindow()<cr>
 nnoremap <leader>2 :call DualWindow()<cr>
 nnoremap <leader>3 :call TriWindow()<cr>
 
-" Also make use tab
-cabbrev help tab help
-cabbrev h tab h
-
-" More comfortable to manage multi-tab on MacVim
-map <D-]> gt
-map <D-[> gT
-map <D-1> 1gt
-map <D-2> 2gt
-map <D-3> 3gt
-map <D-4> 4gt
-map <D-5> 5gt
-map <D-6> 6gt
-map <D-7> 7gt
-map <D-8> 8gt
-map <D-9> 9gt
-map <D-0> :tablast<CR>
 
 " -------------------- Spell checking -------------------- 
 
@@ -334,7 +317,7 @@ autocmd BufReadPost *
 set viminfo^=%
 
 " Twisting .vimrc easily
-nnoremap <leader>ev :tabedit $MYVIMRC<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
 autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost vimrc source %
 
