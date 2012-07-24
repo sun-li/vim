@@ -75,7 +75,6 @@ Firstly, the leader key is mapped to `,` key.
 
     CONTROL-LEFT : Previous buffer
     CONTROL-RIGHT: Next buffer
-
     CONTROL-h    : Previous buffer
     CONTROL-l    : Next buffer
 
@@ -83,10 +82,10 @@ Firstly, the leader key is mapped to `,` key.
     ENTER        : Insert a blank line
     SHIFT-ENTER  : Break the line from cursor and insert a blank line
 
-    CONTROL-H    : Jump to left window
-    CONTROL-L    : Jump to right window
-    CONTROL-K    : Jump to upper window and maximize it
-    CONTROL-J    : Jump to lower window and maximize it
+    CONTROL-p    : Jump to left window
+    CONTROL-n    : Jump to right window
+    CONTROL-k    : Jump to upper window
+    CONTROL-j    : Jump to lower window
 
 ### Visual Mode
 

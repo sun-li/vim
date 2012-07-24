@@ -107,6 +107,10 @@ au InsertLeave * let &updatetime=updaterestore
 
 " -------------------- Motion -------------------- 
 
+" More natural up and sown
+nnoremap j gj
+nnoremap k gk
+
 " More comfortable for browsing text
 nmap <Space> <PageDown>
 nmap <S-Space> <PageUp>
@@ -224,11 +228,13 @@ nnoremap <leader>sj :rightbelow new<cr>
 
 " More comfortable to navigate multi-window
 set winminheight=1
-nnoremap <C-j> <C-w>j<C-w>_
-nnoremap <C-k> <C-w>k<C-w>_
+"nnoremap <C-j> <C-w>j<C-w>_
+"nnoremap <C-k> <C-w>k<C-w>_
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+nnoremap <C-p> <C-w>h
+nnoremap <C-n> <C-w>l
 
 " Make use desktop space
 func! SingleWindow()
