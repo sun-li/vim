@@ -76,6 +76,9 @@ Firstly, the leader key is mapped to `,` key.
     CONTROL-LEFT : Previous buffer
     CONTROL-RIGHT: Next buffer
 
+    CONTROL-h    : Previous buffer
+    CONTROL-l    : Next buffer
+
     BACKSPACE    : Behave like BACKSPACE under insert mode
     ENTER        : Insert a blank line
     SHIFT-ENTER  : Break the line from cursor and insert a blank line

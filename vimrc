@@ -32,6 +32,9 @@ set modelines=0
 " More comfortable leader key
 let mapleader = ","
 
+" Lazy command mode
+nnoremap ; :
+
 " -------------------- Plug-in Pathogen -------------------- 
 
 call pathogen#infect()
@@ -133,7 +136,7 @@ nnoremap <C-i> <C-i>zz
 
 " -------------------- Editing -------------------- 
 
-" No need to follow vi command
+" No need to follow legacy vi command
 map Y y$
 
 " Toggle UPPER CASE, lower case and Title Case
@@ -288,6 +291,8 @@ set noswapfile
 " Quickly switch buffers
 nnoremap <silent> <C-Left> :bp<cr>
 nnoremap <silent> <C-Right> :bn<cr>
+nnoremap <silent> <C-h> :bp<cr>
+nnoremap <silent> <C-l> :bn<cr>
 
 " Close file, keep window
 nnoremap <silent> <leader>q :bd<cr>
@@ -318,8 +323,7 @@ set viminfo^=%
 
 " Twisting .vimrc easily
 nnoremap <leader>ev :e $MYVIMRC<cr>
-autocmd! bufwritepost .vimrc source %
-autocmd! bufwritepost vimrc source %
+autocmd bufwritepost .vimrc source %
 
 " -------------------- Plug-in Powerline -------------------- 
 
@@ -327,6 +331,10 @@ autocmd! bufwritepost vimrc source %
 let g:Powerline_symbols = 'fancy'
 " 'Menlo for Powerline' is a font patcher for vim-powerline on MacVim
 set guifont=Menlo\ for\ Powerline:h12
+
+" Reload color [ https://github.com/Lokaltog/vim-powerline/issues/28 ]
+autocmd bufwritepost .vimrc call Pl#Load()
+autocmd BufDelete * call Pl#Load()
 
 " -------------------- Plug-in Command-T -------------------- 
 
