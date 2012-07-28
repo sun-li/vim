@@ -5,10 +5,10 @@
 "      http://github.com/sun-li       "
 " " " " " " " " " " " " " " " " " " " "
 
-" I tend to explain 'why' to use following settings in my comments
-" Please use command ':h' to check 'what' do those settings mean
+" I tend to comment 'why' (rather than 'what') for following settings 
+" Please use ':h' to check 'what' those settings mean
 
-" -------------------- Dependencies -------------------- 
+" -------------------- Dependencies --------------------
 " Assuming following plug-ins have been installed
 "   pathogen
 "   vim-powerline
@@ -19,28 +19,29 @@
 "   nerdtree
 "   snipmate
 "   supertab
+"   ack
 " Assuming 'molokai' color scheme has been installed
 
-" -------------------- General -------------------- 
+" -------------------- General --------------------
 
 " This .vimrc file target to MacVim
 set nocompatible
 
 " Preventing security risk
-set modelines=0 
+set modelines=0
 
 " More comfortable leader key
 let mapleader = ","
 
-" Lazy command mode
-nnoremap ; :
+" Remove ALL autocommands for the current group if .vimrc is loaded twice
+autocmd!
 
-" -------------------- Plug-in Pathogen -------------------- 
+" -------------------- Plug-in Pathogen --------------------
 
 call pathogen#infect()
 call pathogen#helptags()
 
-" -------------------- MacVim Special -------------------- 
+" -------------------- MacVim Special --------------------
 
 if has("gui_macvim")
     " Removing unnecessary GUI elements
@@ -58,22 +59,21 @@ if has("gui_macvim")
     set fuoptions=maxvert,maxhorz
 endif
 
-" -------------------- Display -------------------- 
+" -------------------- Display --------------------
 
 colorscheme molokai
-
-set gcr=n-v:blinkon0
 
 " Menlo does not have enough line space
 set linespace=1
 
-set lines=45
+set lines=60
 set columns=85
 set colorcolumn=80
 
 " More comfortable cursor
 set scrolloff=3
-set cursorline
+set gcr=n-v:blinkon0
+set nocursorline
 
 " Easier for in-screen jumping
 set relativenumber
@@ -83,7 +83,6 @@ set showmode
 set showcmd
 set ruler
 set laststatus=2
-"set cmdheight=2
 
 " Soft-wrap long text and show a break symbol
 set wrap
@@ -95,17 +94,18 @@ nmap <silent> <leader>l :set list!<CR>
 " Using the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
-" -------------------- Mode -------------------- 
+" -------------------- Mode --------------------
 
 " Alternative way to go back normal mode
 inoremap jj <ESC>
+cnoremap jj <ESC>
 
 " Go back normal mode automatically
-au CursorHoldI * stopinsert 
-au InsertEnter * let updaterestore=&updatetime | set updatetime=10000
-au InsertLeave * let &updatetime=updaterestore
+autocmd CursorHoldI * stopinsert
+autocmd InsertEnter * let updaterestore=&updatetime | set updatetime=10000
+autocmd InsertLeave * let &updatetime=updaterestore
 
-" -------------------- Motion -------------------- 
+" -------------------- Motion --------------------
 
 " More natural up and sown
 nnoremap j gj
@@ -114,8 +114,8 @@ nnoremap k gk
 " More comfortable for browsing text
 nmap <Space> <PageDown>
 nmap <S-Space> <PageUp>
-nmap <S-UP> <C-Y>
-nmap <S-DOWN> <C-E>
+nmap <S-UP> 3<C-Y>
+nmap <S-DOWN> 3<C-E>
 
 " Assuming vim-unimpaired.vim has been installed
 " and C-up and C-down are disabled in System preference -> Keyboard
@@ -134,14 +134,14 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
-" also last and next jump 
+" also last and next jump
 nnoremap <C-o> <C-o>zz
 nnoremap <C-i> <C-i>zz
 
-" -------------------- Editing -------------------- 
+" -------------------- Editing --------------------
 
 " No need to follow legacy vi command
-map Y y$
+nnoremap Y y$
 
 " Toggle UPPER CASE, lower case and Title Case
 function! TwiddleCase(str)
@@ -157,13 +157,22 @@ endfunction
 vnoremap ~ ygv"=TwiddleCase(@")<CR>Pgv
 
 " More comfortable Enter
-nnoremap <CR> O<esc>j
-nnoremap <S-Enter> i<cr><esc>
+nnoremap <CR> i<cr><esc>
 
-" More comfortable BACKSPACE
+" More comfortable BACKSPACE.  No duplicate with 'x'
 nnoremap <BS> kJ
 
-" -------------------- Coding -------------------- 
+" Talk to system clipboard
+nnoremap <leader>y "*y
+nnoremap <leader>yy "*yy
+nnoremap <leader>p "*p
+
+" Faster QuickFix
+nnoremap <leader>cc :cn<cr>
+nnoremap <leader>cp :cp<cr>
+nnoremap <leader>cl :ccl<cr>
+
+" -------------------- Coding --------------------
 
 set encoding=utf-8
 
@@ -173,6 +182,9 @@ filetype plugin on
 filetype indent on
 
 set omnifunc=syntaxcomplete#Complete
+
+autocmd filetype python set omnifunc=pythoncomplete#Complete
+autocmd filetype python setlocal makeprg=python3\ %
 
 " Using space instead of tab (especially useful for Python)
 set tabstop=4
@@ -198,27 +210,14 @@ set hlsearch
 " Removing searching results quickly
 nnoremap <silent> <leader><space> :noh<cr>
 
-set foldmethod=indent
-set foldlevel=99
 set foldenable
-
-nnoremap <leader>f0 :set foldlevel=0<CR>
-nnoremap <leader>f1 :set foldlevel=1<CR>
-nnoremap <leader>f2 :set foldlevel=2<CR>
-nnoremap <leader>f3 :set foldlevel=3<CR>
-nnoremap <leader>f4 :set foldlevel=4<CR>
-nnoremap <leader>f5 :set foldlevel=5<CR>
-nnoremap <leader>f6 :set foldlevel=6<CR>
-nnoremap <leader>f7 :set foldlevel=7<CR>
-nnoremap <leader>f8 :set foldlevel=8<CR>
-nnoremap <leader>f9 :set foldlevel=9<CR>
 
 " Exporting source code to html
 let html_number_lines=1
 let html_use_css=1
 let use_xhtml=1
 
-" -------------------- Windows and tabs -------------------- 
+" -------------------- Windows and tabs --------------------
 
 " Split new window in a more comfortale way
 nnoremap <leader>sh :leftabove vnew<cr>
@@ -227,14 +226,10 @@ nnoremap <leader>sk :leftabove new<cr>
 nnoremap <leader>sj :rightbelow new<cr>
 
 " More comfortable to navigate multi-window
-set winminheight=1
-"nnoremap <C-j> <C-w>j<C-w>_
-"nnoremap <C-k> <C-w>k<C-w>_
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
-
-nnoremap <C-p> <C-w>h
-nnoremap <C-n> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
 " Make use desktop space
 func! SingleWindow()
@@ -275,7 +270,7 @@ nnoremap <leader>2 :call DualWindow()<cr>
 nnoremap <leader>3 :call TriWindow()<cr>
 
 
-" -------------------- Spell checking -------------------- 
+" -------------------- Spell checking --------------------
 
 map <leader>ss :setlocal spell!<cr>
 map <leader>sn ]s
@@ -283,10 +278,9 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>sc z=
 
-" -------------------- Buffers -------------------- 
+" -------------------- Buffers --------------------
 
 set hidden
-
 set autoread
 
 " Version control tools can do better job than VIM
@@ -295,30 +289,32 @@ set nowb
 set noswapfile
 
 " Quickly switch buffers
-nnoremap <silent> <C-Left> :bp<cr>
-nnoremap <silent> <C-Right> :bn<cr>
-nnoremap <silent> <C-h> :bp<cr>
-nnoremap <silent> <C-l> :bn<cr>
+nnoremap <silent> ;; <C-^>
 
-" Close file, keep window
+" Close file/buffer, keep window
 nnoremap <silent> <leader>q :bd<cr>
 
 nnoremap <silent> <leader>w :w<cr>
+" Remove trailing whitespaces befoew save it
+nnoremap <silent> <leader>W :%s/\s\+$//ge<cr>:w<cr>
 
-" Auto-save 
-au FocusLost * :wa
+" Auto chagne working folder to current file's one
+autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 
-" Delete trailing white space on save, useful for Python and CoffeeScript 
+" Auto-save
+"autocmd FocusLost * :wa
+
+" Delete trailing white space on save, useful for Python and CoffeeScript
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
-autocmd BufWrite *.md :call DeleteTrailingWS()
+autocmd BufWrite *.py     : call DeleteTrailingWS()
+autocmd BufWrite *.coffee : call DeleteTrailingWS()
+autocmd BufWrite *.md     : call DeleteTrailingWS()
 
-" Return to last edit position when opening files 
+" Return to last edit position when opening files
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
@@ -331,9 +327,15 @@ set viminfo^=%
 nnoremap <leader>ev :e $MYVIMRC<cr>
 autocmd bufwritepost .vimrc source %
 
-" -------------------- Plug-in Powerline -------------------- 
+" -------------------- Help Window --------------------
 
-" Enabling font patcher for plug-in vim-powerline 
+autocmd filetype help set relativenumber
+autocmd filetype help nnoremap <buffer><cr> <c-]>
+autocmd filetype help nnoremap <buffer><bs> <c-T>
+
+" -------------------- Plug-in Powerline --------------------
+
+" Enabling font patcher for plug-in vim-powerline
 let g:Powerline_symbols = 'fancy'
 " 'Menlo for Powerline' is a font patcher for vim-powerline on MacVim
 set guifont=Menlo\ for\ Powerline:h12
@@ -342,7 +344,7 @@ set guifont=Menlo\ for\ Powerline:h12
 autocmd bufwritepost .vimrc call Pl#Load()
 autocmd BufDelete * call Pl#Load()
 
-" -------------------- Plug-in Command-T -------------------- 
+" -------------------- Plug-in Command-T --------------------
 
 let g:CommandTMaxHeight = 30
 
@@ -353,14 +355,14 @@ noremap <leader>O :CommandTFlush<cr>\|:CommandT<cr>
 " Open buffer
 nnoremap <leader>b :CommandTBuffer<cr>
 
-" -------------------- Plug-in NerdTree -------------------- 
+" -------------------- Plug-in NerdTree --------------------
 
 nnoremap <leader>d :NERDTreeToggle<cr>
 
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinPos='right'
 
-" -------------------- Plug-in Tagbar -------------------- 
+" -------------------- Plug-in Tagbar --------------------
 
 nnoremap <leader>t :TagbarToggle<cr>
 
@@ -369,7 +371,7 @@ let g:tagbar_autoclose = 1
 let g:tagbar_compact = 1
 let g:tagbar_expand = 1
 
-" -------------------- Plug-in Tabular -------------------- 
+" -------------------- Plug-in Tabular --------------------
 
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
@@ -377,19 +379,25 @@ nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 nmap <Leader>a:: :Tabularize /:\zs<CR>
 vmap <Leader>a:: :Tabularize /:\zs<CR>
+nmap <Leader>a# :Tabularize /#<CR>
+vmap <Leader>a# :Tabularize /#<CR>
 nmap <Leader>a, :Tabularize /,<CR>
 vmap <Leader>a, :Tabularize /,<CR>
 nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
-" -------------------- Plug-in Tabular -------------------- 
+" -------------------- Plug-in snipMate --------------------
 
 let g:snipMate = {}
-let g:snipMate.scope_aliases = {} 
+let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails'
 let g:snipMate.scope_aliases['javascript'] = 'javascript,javascript-jquery'
 
-" -------------------- Plug-in SuperTab -------------------- 
+" -------------------- Plug-in SuperTab --------------------
 
 let g:SuperTabDefaultCompletionType = "context"
+
+" -------------------- Plug-in PyDoc --------------------
+
+let g:pydoc_highlight=0
 
