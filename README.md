@@ -46,7 +46,7 @@ Firstly, the leader key is mapped to `,` key.
     ,a<SPACE>    : Tabulate by SPACE      (by plug-in tabular)
 
     ,b           : Buffers list           (by plug-in command-t)
-    ,cc          : Next error in QuickFix window
+    ,n           : Next error in QuickFix window
     ,cp          : Prev error in QuickFix window
     ,cl          : Close QuickFix window
     ,d           : Directories            (by plug-in nerdtree)

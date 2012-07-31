@@ -168,7 +168,7 @@ nnoremap <leader>yy "*yy
 nnoremap <leader>p "*p
 
 " Faster QuickFix
-nnoremap <leader>cc :cn<cr>
+nnoremap <leader>n :cn<cr>
 nnoremap <leader>cp :cp<cr>
 nnoremap <leader>cl :ccl<cr>
 
