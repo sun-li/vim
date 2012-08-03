@@ -213,7 +213,8 @@ nnoremap <silent> <leader><space> :noh<cr>
 set foldmethod=indent
 set nofoldenable
 set foldnestmax=10
-set foldlevel=1
+set foldlevel=2
+set foldignore=
 
 " Exporting source code to html
 let html_number_lines=1
@@ -300,6 +301,8 @@ nnoremap <silent> <leader>q :bd<cr>
 nnoremap <silent> <leader>w :w<cr>
 " Remove trailing whitespaces befoew save it
 nnoremap <silent> <leader>W :%s/\s\+$//ge<cr>:w<cr>
+
+nnoremap <leader>z :q<cr>
 
 " Auto chagne working folder to current file's one
 autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
