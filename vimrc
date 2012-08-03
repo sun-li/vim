@@ -210,7 +210,10 @@ set hlsearch
 " Removing searching results quickly
 nnoremap <silent> <leader><space> :noh<cr>
 
-set foldenable
+set foldmethod=indent
+set nofoldenable
+set foldnestmax=10
+set foldlevel=1
 
 " Exporting source code to html
 let html_number_lines=1
