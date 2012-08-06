@@ -97,8 +97,8 @@ set listchars=tab:▸\ ,eol:¬
 " -------------------- Mode --------------------
 
 " Alternative way to go back normal mode
-inoremap jj <ESC>
-cnoremap jj <ESC>
+inoremap jk <ESC>
+cnoremap jk <ESC>
 
 " Go back normal mode automatically
 autocmd CursorHoldI * stopinsert

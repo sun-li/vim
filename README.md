@@ -29,11 +29,11 @@ Firstly, the leader key is mapped to `,` key.
 
 ### Command Mode
 
-    jj           : Go back to Normal Mode
+    jk           : Go back to Normal Mode
 
 ### Insert Mode
 
-    jj           : Go back to Normal Mode
+    jk           : Go back to Normal Mode
     TAB          : Auto completion        (by plug-in supertab)
 
 ### Normal Mode
@@ -64,6 +64,7 @@ Firstly, the leader key is mapped to `,` key.
     ,y           : Copy to OS clipboard
     ,yy          : Copy to OS clipboard
     ,<SPACE>     : Remove searching highlight results
+    ,z           : Quit VIM
 
     ,1           : Single window
     ,2           : Dual-window
